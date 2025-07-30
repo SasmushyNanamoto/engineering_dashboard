@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engineering Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            color: #2c3e50;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #7f8c8d;
+            font-size: 1.1rem;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .card h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .metric {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            padding: 10px 0;
+            border-bottom: 1px solid #ecf0f1;
+        }
+
+        .metric:last-child {
+            border-bottom: none;
+        }
+
+        .metric-label {
+            font-weight: 500;
+            color: #7f8c8d;
+        }
+
+        .metric-value {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .status-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+
+        .status-online {
+            background-color: #27ae60;
+        }
+
+        .status-warning {
+            background-color: #f39c12;
+        }
+
+        .status-offline {
+            background-color: #e74c3c;
+        }
+
+        .chart-container {
+            height: 200px;
+            background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 15px;
+            color: #6c757d;
+        }
+
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .action-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: transform 0.2s ease;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 Engineering Dashboard</h1>
+            <p>Real-time monitoring and analytics for your engineering team</p>
+        </div>
+
+        <div class="dashboard-grid">
+            <div class="card">
+                <h3>📊 System Health</h3>
+                <div class="metric">
+                    <span class="metric-label">API Status</span>
+                    <span><span class="status-indicator status-online"></span>Online</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Database</span>
+                    <span><span class="status-indicator status-online"></span>Healthy</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Cache</span>
+                    <span><span class="status-indicator status-warning"></span>Warning</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Load Balancer</span>
+                    <span><span class="status-indicator status-online"></span>Online</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>👥 Team Activity</h3>
+                <div class="metric">
+                    <span class="metric-label">Active Developers</span>
+                    <span class="metric-value">12</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Pull Requests</span>
+                    <span class="metric-value">8</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Code Reviews</span>
+                    <span class="metric-value">15</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Deployments Today</span>
+                    <span class="metric-value">3</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>📈 Performance Metrics</h3>
+                <div class="metric">
+                    <span class="metric-label">Response Time</span>
+                    <span class="metric-value">245ms</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Uptime</span>
+                    <span class="metric-value">99.9%</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Error Rate</span>
+                    <span class="metric-value">0.1%</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">CPU Usage</span>
+                    <span class="metric-value">67%</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>🔧 Recent Deployments</h3>
+                <div class="metric">
+                    <span class="metric-label">v2.1.4</span>
+                    <span><span class="status-indicator status-online"></span>Success</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">v2.1.3</span>
+                    <span><span class="status-indicator status-online"></span>Success</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">v2.1.2</span>
+                    <span><span class="status-indicator status-offline"></span>Failed</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">v2.1.1</span>
+                    <span><span class="status-indicator status-online"></span>Success</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>📊 Analytics Overview</h3>
+            <div class="chart-container">
+                📈 Interactive charts would be displayed here
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>⚡ Quick Actions</h3>
+            <div class="quick-actions">
+                <button class="action-btn">🚀 Deploy to Production</button>
+                <button class="action-btn">📋 View Logs</button>
+                <button class="action-btn">🔧 System Settings</button>
+                <button class="action-btn">📊 Generate Report</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add some interactivity
+        document.addEventListener('DOMContentLoaded', function() {
+            // Update metrics every 5 seconds
+            setInterval(function() {
+                const metrics = document.querySelectorAll('.metric-value');
+                metrics.forEach(metric => {
+                    if (metric.textContent.includes('%')) {
+                        const currentValue = parseInt(metric.textContent);
+                        const newValue = Math.max(0, Math.min(100, currentValue + (Math.random() - 0.5) * 10));
+                        metric.textContent = newValue.toFixed(1) + '%';
+                    }
+                });
+            }, 5000);
+
+            // Add click handlers for action buttons
+            const actionButtons = document.querySelectorAll('.action-btn');
+            actionButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    alert('Action: ' + this.textContent);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
